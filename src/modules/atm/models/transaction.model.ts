@@ -1,12 +1,12 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { TransactionType } from './domain.enums';
 
 @ObjectType()
 export class Transaction {
+  @Field()
   id: number;
-
-  type: TransactionType;
-
+  @Field()
+  type: 'WITHDRAWAL' | 'DEPOSIT' | 'TRANSFER_IN' | 'TRANSFER_OUT' | 'FEE';
+  @Field()
   amount: number;
 
   @Field()

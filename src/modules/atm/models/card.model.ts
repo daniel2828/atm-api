@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Account } from './account.model';
+import { Account } from './account.schema';
 
 @ObjectType()
 export class Card {

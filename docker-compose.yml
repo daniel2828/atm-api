@@ -7,20 +7,18 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://atmuser:password@db:5432/atmdb
+      - MONGODB_URI=mongodb://mongo:27017/atmdb
     depends_on:
-      - db
+      - mongo
     volumes:
       - .:/app
 
-  db:
-    image: postgres:13-alpine
-    environment:
-      POSTGRES_USER: atmuser
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: atmdb
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mongo_data:/data/db
 
 volumes:
-  postgres_data:
+  mongo_data:
