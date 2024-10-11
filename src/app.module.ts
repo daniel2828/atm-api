@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ApolloConfiguredModule } from './shared/configured-apollo.module';
+import { ApolloConfiguredModule } from './modules/shared/configured-apollo.module';
+import { AtmModule } from './modules/atm/atm.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [ApolloConfiguredModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [MongooseModule.forRoot('mongodb://localhost/atm'), ApolloConfiguredModule, AtmModule ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
