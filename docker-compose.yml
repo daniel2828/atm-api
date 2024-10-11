@@ -1,0 +1,26 @@
+version: '3'
+services:
+  atm-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://atmuser:password@db:5432/atmdb
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: atmuser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: atmdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
