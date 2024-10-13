@@ -9,6 +9,5 @@ export class CreateAccountDto {
   @IsDecimal()
   balance: number;
   @Field()
-  @IsNotEmpty()
-  accountType: string; // "SAVINGS" o "CHECKING"
+  iban: string;
 }
