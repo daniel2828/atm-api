@@ -15,10 +15,7 @@ export class AccountsResolver {
   }
 
   @Query(() => Account, { name: 'account' })
-  async getAccount(
-    @Args('getAccountDto') getAccountDto: string,
-  ): Promise<Account> {
-    return null;
-    //return await this.accountsService.createAccount(createAccountDto);
+  async getAccountById(@Args('id') id: string): Promise<Account> {
+    return await this.accountsService.getAccountById(id);
   }
 }
